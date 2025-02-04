@@ -44,6 +44,9 @@ public class Game extends JFrame {
             }
         });
 
+        ImageIcon icon = new ImageIcon("logo.png"); // Use the image path
+        setIconImage(icon.getImage());
+
         setTitle("Super Clicker Challenge");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
