@@ -11,7 +11,7 @@ public class Game extends JFrame {
     private JLabel scoreLabel, timeLabel, highScoreLabel;
     private int score = 0;
     private int highScore = 0;
-    private int timeLeft = 3;
+    private int timeLeft = 30;
     private Timer gameTimer, moveTimer, colorTimer;
     private Random random = new Random();
     private Color[] buttonColors = {
