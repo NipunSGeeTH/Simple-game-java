@@ -11,7 +11,7 @@ public class Game extends JFrame {
     private JLabel scoreLabel, timeLabel, highScoreLabel;
     private int score = 0;
     private int highScore = 0;
-    private int timeLeft = 30;
+    private int timeLeft = 3;
     private Timer gameTimer, moveTimer, colorTimer;
     private Random random = new Random();
     private Color[] buttonColors = {
@@ -44,13 +44,12 @@ public class Game extends JFrame {
             }
         });
 
-        ImageIcon icon = new ImageIcon("logo.png"); // Use the image path
-        setIconImage(icon.getImage());
-
         setTitle("Super Clicker Challenge");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
+        ImageIcon icon = new ImageIcon("logo.png"); // Use the image path
+        setIconImage(icon.getImage());
     }
 
     private void initializeLabels() {
@@ -141,6 +140,34 @@ public class Game extends JFrame {
         moveTimer.stop();
         colorTimer.stop();
         button.setEnabled(false);
+
+
+        JFrame gameOverFrame = new JFrame("Game Over");
+    gameOverFrame.setSize(400, 300);
+    gameOverFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    gameOverFrame.setLayout(new GridLayout(3, 1));
+
+    // Display final score and high score
+    JLabel gameOverLabel = new JLabel("Game Over!", SwingConstants.CENTER);
+    gameOverLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+    JLabel scoreLabel = new JLabel("Your Score: " + score, SwingConstants.CENTER);
+    JLabel highScoreLabel = new JLabel("High Score: " + highScore, SwingConstants.CENTER);
+    gameOverFrame.add(gameOverLabel);
+    gameOverFrame.add(scoreLabel);
+    gameOverFrame.add(highScoreLabel);
+    ImageIcon icon1 = new ImageIcon("logo.png"); // Use the image path
+        gameOverFrame.setIconImage(icon1.getImage());
+  
+   
+    gameOverFrame.setVisible(true);
+
+
+
+
+
+
+
         
         // Update high score
         if (score > highScore) {
@@ -175,6 +202,8 @@ public class Game extends JFrame {
         // Update labels
         scoreLabel.setText("Score: 0");
         timeLabel.setText("Time: " + timeLeft);
+        playAgainButton.setVisible(false);
+        
         
         // Restart game
         startGame();
